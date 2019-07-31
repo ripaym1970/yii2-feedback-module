@@ -1,5 +1,5 @@
 <?php
-namespace egor260890\feedback;
+
 /**
  * Created by PhpStorm.
  * User: User
@@ -7,20 +7,18 @@ namespace egor260890\feedback;
  * Time: 15:20
  */
 
+namespace egor260890\feedback;
+
 use egor260890\feedback\assets\Assets;
 
-class Module extends \yii\base\Module
-{
+class Module extends \yii\base\Module {
 
     public $controllerNamespace = 'egor260890\feedback\controllers';
-    
-    public $defaultRoute='feedback';
+    public $defaultRoute        = 'feedback';
 
-    public function init()
-    {
+    public function init() {
         \Yii::configure($this, require __DIR__ . '/config.php');
-        Assets::register(\Yii::$app->getView(),\yii\web\View::POS_END);
+        Assets::register(\Yii::$app->getView(), \yii\web\View::POS_END);
         parent::init();
     }
-
 }
