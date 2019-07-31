@@ -8,9 +8,7 @@
 
 namespace egor260890\feedback\entities;
 
-
-interface FeedbackInterface
-{
+interface FeedbackInterface {
 
     function getName():string ;
 
@@ -21,5 +19,4 @@ interface FeedbackInterface
     function getEmail():string ;
 
     function getMessage():string ;
-
 }

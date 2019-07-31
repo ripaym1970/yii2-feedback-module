@@ -8,13 +8,11 @@
 
 namespace egor260890\feedback\forms\search;
 
-
 use egor260890\feedback\entities\Feedback;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
-class FeedbackSearch extends Model
-{
+class FeedbackSearch extends Model {
 
     private $id;
     private $name;
@@ -27,8 +25,7 @@ class FeedbackSearch extends Model
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['id','status'], 'integer'],
             [['created_date','email','company_name'],'string'],
@@ -39,8 +36,7 @@ class FeedbackSearch extends Model
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
+    public function scenarios() {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
@@ -52,8 +48,7 @@ class FeedbackSearch extends Model
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
+    public function search($params) {
         $query = Feedback::find();
 
         // add conditions that should always apply here
@@ -74,76 +69,75 @@ class FeedbackSearch extends Model
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'status'=>$this->status,
+            'id'     => $this->id,
+            'status' => $this->status,
         ]);
 
-
-        $query->andFilterWhere(['like', 'name', $this->name])
+        $query
+            ->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'tel', $this->tel])
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'company_name', $this->company_name]);
+
         $query->andFilterWhere(['>=', 'created_date', $this->created_date ? strtotime($this->created_date . ' 00:00:00') : null]);
         $query->andFilterWhere(['<=', 'created_date', $this->created_date ? strtotime($this->created_date . ' 23:59:59') : null]);
 
         return $dataProvider;
     }
 
-    public function getId(){
+    public function getId() {
         return $this->id;
     }
 
-    public function setId($id){
-        $this->id=$id;
+    public function setId($id) {
+        $this->id = $id;
     }
 
-    public function getName(){
+    public function getName() {
         return $this->name;
     }
 
-    public function setName($name){
-        $this->name=$name;
+    public function setName($name) {
+        $this->name = $name;
     }
 
-    public function getTel(){
+    public function getTel() {
         return $this->tel;
     }
 
-    public function setTel($tel){
-        $this->tel=$tel;
+    public function setTel($tel) {
+        $this->tel = $tel;
     }
 
-    public function getCreated_date(){
+    public function getCreated_date() {
         return $this->created_date;
     }
 
-    public function setCreated_date($created_date){
-        $this->created_date=$created_date;
+    public function setCreated_date($created_date) {
+        $this->created_date = $created_date;
     }
 
-    public function getStatus(){
+    public function getStatus() {
         return $this->status;
     }
 
-    public function setStatus($status){
-        $this->status=$status;
+    public function setStatus($status) {
+        $this->status = $status;
     }
 
-    public function getEmail(){
+    public function getEmail() {
         return $this->email;
     }
 
-    public function setEmail($email){
-        $this->email=$email;
+    public function setEmail($email) {
+        $this->email = $email;
     }
 
-    public function getCompany_name(){
+    public function getCompany_name() {
         return $this->company_name;
     }
 
-    public function setCompany_name($company_name){
-        $this->company_name=$company_name;
+    public function setCompany_name($company_name) {
+        $this->company_name = $company_name;
     }
-
-
 }

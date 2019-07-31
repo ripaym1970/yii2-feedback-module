@@ -4,11 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model core\entities\site\Feedback */
-$this->title=$model->id;
+/* @var $model egor260890\feedback\entities\Feedback */
+
+$this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Обратная связь', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $model->id;
+
 ?>
+
 <div class="feedback-view">
 
     <p>
@@ -30,8 +33,8 @@ $this->params['breadcrumbs'][] = $model->id;
             'email',
             'message',
             [
-                'attribute'=>'created_date',
-                'value'=>function($model){
+                'attribute' => 'created_date',
+                'value' => function($model){
                     return Yii::$app->formatter->asDatetime($model->created_date,'dd.MM.yyyy HH:mm:ss');
                 },
             ]

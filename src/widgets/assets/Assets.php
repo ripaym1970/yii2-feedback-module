@@ -1,4 +1,5 @@
 <?php
+
 namespace egor260890\feedback\widgets\assets;
 
 use yii\web\AssetBundle;

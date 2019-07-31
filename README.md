@@ -71,7 +71,6 @@ yii migrate --migrationPath=@egor260890/feedback/migrations/
                 'enableClientValidation' => true,
             ]
         ])?>
-        
 ```
 
 
@@ -87,20 +86,19 @@ class Observer implements FeedbackObserverInterface{
 
 Подключаем его в настройках модуля
 ```$xslt
-'modules'=>[
+'modules' => [
         'feedback-send' => [
             'class' => 'egor260890\feedback\widgets\Module',
-            'observers'=>[
+            'observers' => [
                 \mypath\Observer:class,
-                \mypath\Observer2:class
+                \mypath\Observer2:class,
             ]
             //либо
-            'observers'=>\mypath\Observer:class
+            'observers' => \mypath\Observer:class,
             //либо 
-            'observers'=>function(){
+            'observers' => function(){
                 return new Observer();
-            }
-                           
+            },
         ],
     ],
 ```

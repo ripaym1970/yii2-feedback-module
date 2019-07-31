@@ -22,21 +22,21 @@ class FeedbackForm extends Model {
     private $company_name;
 
     private $rules=[
-        [['tel','company_name'], 'string'],
-        //['tel',PhoneValidator::class],
-        [['name','email'],'string','max'=>100],
-        ['message','string','max'=>1000],
-        ['email','email','message'=>'Неправильный e-mail'],
+        [['tel', 'company_name'], 'string'],
+        //['tel', PhoneValidator::class],
+        [['name', 'email'], 'string', 'max' => 100],
+        ['message', 'string', 'max' => 1000],
+        ['email', 'email', 'message' => 'Неправильный e-mail'],
     ];
 
     public function __construct(Feedback $feedback=null, $config=[]) {
         if ($feedback) {
-            $this->name = $feedback->name;
-            $this->tel = $feedback->tel;
-            $this->email = $feedback->email;
-            $this->message = $feedback->message;
+            $this->name         = $feedback->name;
+            $this->tel          = $feedback->tel;
+            $this->email        = $feedback->email;
+            $this->message      = $feedback->message;
             $this->company_name = $feedback->company_name;
-            $this->status = $feedback->status;
+            $this->status       = $feedback->status;
         } else {
             $this->status = Feedback::STATUS_UNREVIEWED;
         }

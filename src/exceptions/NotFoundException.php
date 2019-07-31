@@ -8,8 +8,6 @@
 
 namespace egor260890\feedback\exceptions;
 
-
-class NotFoundException extends \DomainException
-{
+class NotFoundException extends \DomainException {
 
 }

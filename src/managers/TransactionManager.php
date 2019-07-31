@@ -2,13 +2,14 @@
 
 namespace egor260890\feedback\managers;
 
+class TransactionManager {
 
-class TransactionManager
-{
-
-
-    public function wrap(callable $function)
-    {
+    /**
+     * @param callable $function
+     *
+     * @throws \Exception
+     */
+    public function wrap(callable $function) {
         $transaction = \Yii::$app->db->beginTransaction();
         try {
             $function();
