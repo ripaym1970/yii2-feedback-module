@@ -15,6 +15,11 @@ function registerFeedbackForm(id) {
             data:     data,
             success: function(res){
                 console.log(res);
+                if (res === 'res') {
+                    $('#message').html('Отправлено');
+                } else {
+                    $('#message').html('Ошибка отправки');
+                }
                 $(this)[0].reset();
                 $('#'+id).trigger('send.feedback');
             },

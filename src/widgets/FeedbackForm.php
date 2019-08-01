@@ -41,6 +41,8 @@ class FeedbackForm extends Widget {
 
         $form = ActiveForm::begin($this->formConfig);
         echo $this->renderFields($model, $form);
+        echo '<span id="message" class="hidden"></span>';
+
         ActiveForm::end();
 
         $this->getView()->registerJs(new JsExpression("registerFeedbackForm(\"$this->id\")"));
