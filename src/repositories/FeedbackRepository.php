@@ -8,6 +8,7 @@
 
 namespace egor260890\feedback\repositories;
 
+use common\components\tools\Tools;
 use egor260890\feedback\entities\Feedback;
 use egor260890\feedback\exceptions\NotFoundException;
 
@@ -25,8 +26,11 @@ class FeedbackRepository {
      * @param Feedback $feedback
      */
     public function save(Feedback $feedback) {
+        if (!$feedback->validate()) {
+            throw new \RuntimeException('Feedback. Validate error. ' . Tools::errorsToString($feedback->errors));
+        }
         if (!$feedback->save()) {
-            throw new \RuntimeException('Saving error.');
+            throw new \RuntimeException('Feedback. Saving error.');
         }
     }
 
@@ -38,7 +42,7 @@ class FeedbackRepository {
      */
     public function remove(Feedback $feedback) {
         if (!$feedback->delete()) {
-            throw new \RuntimeException('Removing error.');
+            throw new \RuntimeException('Feedback. Removing error.');
         }
     }
 }

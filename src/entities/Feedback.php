@@ -10,8 +10,6 @@ namespace egor260890\feedback\entities;
 
 use yii\db\ActiveRecord;
 
-
-
 /**
  * Class Feedback
  * @package core\entities
@@ -36,7 +34,7 @@ class Feedback extends ActiveRecord implements FeedbackInterface {
 
     public function transactions(): array {
         return [
-            self::SCENARIO_DEFAULT => self::OP_DELETE,
+            //self::SCENARIO_DEFAULT => self::OP_DELETE,
             self::SCENARIO_DEFAULT => self::OP_INSERT,
         ];
     }

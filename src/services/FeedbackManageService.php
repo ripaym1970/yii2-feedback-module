@@ -41,6 +41,7 @@ class FeedbackManageService implements ObservableInterface {
             $form->getMessage(),
             $form->getCompany_name()
         );
+
         $this->feedbacks->save($feedback);
         $this->notify($feedback);
 

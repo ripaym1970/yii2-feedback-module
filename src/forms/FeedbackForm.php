@@ -21,7 +21,7 @@ class FeedbackForm extends Model {
     private $message;
     private $company_name;
 
-    private $rules=[
+    private $rules = [
         [['tel', 'company_name'], 'string'],
         //['tel', PhoneValidator::class],
         [['name', 'email'], 'string', 'max' => 100],
