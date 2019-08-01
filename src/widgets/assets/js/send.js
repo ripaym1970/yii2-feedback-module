@@ -16,10 +16,14 @@ function registerFeedbackForm(id) {
             data:     data,
             success: function(res){
                 console.log(res);
+                let el = $('#message_status');
+                el.removeClass('hidden');
                 if (res === 'success') {
-                    $('#message_status').html('Отправлено').removeClass('hidden');
+                    console.log('Отправлено');
+                    el.html('Отправлено');
                 } else {
-                    $('#message_status').html('Ошибка отправки').removeClass('hidden');
+                    console.log('Ошибка отправки');
+                    el.html('Ошибка отправки');
                 }
                 $(this)[0].reset();
                 $('#'+id).trigger('send.feedback');
