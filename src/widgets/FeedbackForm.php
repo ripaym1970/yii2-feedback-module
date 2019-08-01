@@ -41,8 +41,8 @@ class FeedbackForm extends Widget {
 
         $form = ActiveForm::begin($this->formConfig);
         echo $this->renderFields($model, $form);
-        echo '<span id="send_success" class="send green hidden">'.\Yii::t('app','Відправлено').'</span>';
-        echo '<span id="send_error"   class="send red hidden">'.\Yii::t('app','Ошибка відправки').'</span>';
+        echo '<span id="send_success" class="send pl10 green hidden">'.\Yii::t('app','Відправлено').'</span>';
+        echo '<span id="send_error"   class="send pl10 red hidden">'.\Yii::t('app','Ошибка відправки').'</span>';
 
         ActiveForm::end();
 

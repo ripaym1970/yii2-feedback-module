@@ -18,7 +18,7 @@ function registerFeedbackForm(id) {
             dateType: 'json',
             data:     data,
             success: function(res){
-                console.log(res);
+                //console.log(res);
                 if (res === 'success') {
                     $('#send_success').removeClass('hidden');
                 } else {
