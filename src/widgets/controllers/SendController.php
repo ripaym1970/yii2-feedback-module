@@ -58,6 +58,7 @@ class SendController extends \yii\web\Controller {
             $this->service->create($form);
         } catch (\Exception $e) {
             \Yii::$app->errorHandler->logException($e);
+            return 'Save error => /frontend/runtime/logs/app.log';
         }
 
         return 'success';
