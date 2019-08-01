@@ -41,7 +41,7 @@ class FeedbackForm extends Widget {
 
         $form = ActiveForm::begin($this->formConfig);
         echo $this->renderFields($model, $form);
-        echo '<span id="message" class="hidden"></span>';
+        echo '<span id="message_status" class="hidden"></span>';
 
         ActiveForm::end();
 

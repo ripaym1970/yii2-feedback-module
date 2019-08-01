@@ -4,6 +4,7 @@
 
 function registerFeedbackForm(id) {
     $('#'+id).on('beforeSubmit',function() {
+        $('#message_status').addClass('hidden');
         let data = $(this).serialize();
         $.ajax({
             //url:      '/feedback-send',
@@ -15,10 +16,10 @@ function registerFeedbackForm(id) {
             data:     data,
             success: function(res){
                 console.log(res);
-                if (res === 'res') {
-                    $('#message').html('Отправлено');
+                if (res === 'success') {
+                    $('#message_status').html('Отправлено').removeClass('hidden');
                 } else {
-                    $('#message').html('Ошибка отправки');
+                    $('#message_status').html('Ошибка отправки').removeClass('hidden');
                 }
                 $(this)[0].reset();
                 $('#'+id).trigger('send.feedback');
