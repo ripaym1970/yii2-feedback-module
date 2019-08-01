@@ -21,11 +21,11 @@ class FeedbackManageService implements ObservableInterface {
     private $feedbacks;
     private $transaction;
 
-    private $feedbackObservables=[];
+    private $feedbackObservables = [];
 
     public function __construct(FeedbackRepository $feedbacks, TransactionManager $transaction) {
         $this->transaction = $transaction;
-        $this->feedbacks = $feedbacks;
+        $this->feedbacks   = $feedbacks;
     }
 
     /**
@@ -157,7 +157,7 @@ class FeedbackManageService implements ObservableInterface {
         return true;
     }
 
-    public function detach(FeedbackObserverInterface $observer,bool $compareByClassName=false) {
+    public function detach(FeedbackObserverInterface $observer, bool $compareByClassName=false) {
         array_walk($this->feedbackObservables, function($element, $key) use ($observer, $compareByClassName) {
             if ($compareByClassName ? $element == $observer : $element === $observer) {
                 unset($this->feedbackObservables[$key]);

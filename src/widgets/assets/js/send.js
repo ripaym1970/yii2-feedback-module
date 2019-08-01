@@ -6,7 +6,7 @@ function registerFeedbackForm(id) {
     $('#'+id).on('beforeSubmit',function() {
         let data = $(this).serialize();
         $.ajax({
-            url:      '/feedback-send',
+            url:      '/<?=Yii::$app->language?>/feedback-send',
             type:     'POST',
             context:  this,
             dateType: 'json',

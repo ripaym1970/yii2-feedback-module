@@ -8,6 +8,7 @@
 
 namespace egor260890\feedback\widgets\controllers;
 
+use DomainException;
 use egor260890\feedback\forms\FeedbackForm;
 use egor260890\feedback\services\FeedbackManageService;
 use yii\base\Module;
@@ -19,10 +20,11 @@ class SendController extends \yii\web\Controller {
     private $service;
     private $request;
 
-    public function __construct($id, Module $module,FeedbackManageService $service, array $config = []) {
+    public function __construct($id, Module $module, FeedbackManageService $service, array $config = []) {
         $service->attachMany(\Yii::$app->getModule('feedback-send')->observers ? : null);
         $this->request = \Yii::$app->request;
         $this->service = $service;
+
         parent::__construct($id, $module, $config);
     }
 
@@ -44,14 +46,18 @@ class SendController extends \yii\web\Controller {
     public function actionIndex() {
         \Yii::$app->response->format = 'json';
         $form = new FeedbackForm();
-        if ($form->load($this->request->post()) && $form->validate()) {
-            try {
-                $this->service->create($form);
-            } catch (\Exception $e) {
-                \Yii::$app->errorHandler->logException($e);
-            }
-        } else {
+        if (!$form->load($this->request->post())) {
             throw new BadRequestHttpException('Bad request');
+        }
+
+        if (!$form->validate()) {
+            throw new DomainException('No validate');
+        }
+
+        try {
+            $this->service->create($form);
+        } catch (\Exception $e) {
+            \Yii::$app->errorHandler->logException($e);
         }
 
         return 'success';
