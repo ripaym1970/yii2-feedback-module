@@ -41,7 +41,8 @@ class FeedbackForm extends Widget {
 
         $form = ActiveForm::begin($this->formConfig);
         echo $this->renderFields($model, $form);
-        echo '<span id="message_status" class="hidden"></span>';
+        echo '<span id="send_success" class="send green hidden">Отправлено</span>';
+        echo '<span id="send_error"   class="send red hidden">Ошибка отправки</span>';
 
         ActiveForm::end();
 

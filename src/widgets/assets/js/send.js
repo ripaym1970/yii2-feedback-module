@@ -3,8 +3,11 @@
  */
 
 function registerFeedbackForm(id) {
-    $('#'+id).on('beforeSubmit',function() {
-        $('#message_status').addClass('hidden');
+    $('#'+id)
+    .on('beforeValidate',function() {
+        $('.send').addClass('hidden');
+    })
+    .on('beforeSubmit',function() {
         let data = $(this).serialize();
         $.ajax({
             //url:      '/feedback-send',
@@ -16,14 +19,10 @@ function registerFeedbackForm(id) {
             data:     data,
             success: function(res){
                 console.log(res);
-                let el = $('#message_status');
-                el.removeClass('hidden');
                 if (res === 'success') {
-                    console.log('Отправлено');
-                    el.html('Отправлено');
+                    $('#send_success').removeClass('hidden');
                 } else {
-                    console.log('Ошибка отправки');
-                    el.html('Ошибка отправки');
+                    $('#send_error').removeClass('hidden');
                 }
                 $(this)[0].reset();
                 $('#'+id).trigger('send.feedback');
