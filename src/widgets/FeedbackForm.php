@@ -41,8 +41,8 @@ class FeedbackForm extends Widget {
 
         $form = ActiveForm::begin($this->formConfig);
         echo $this->renderFields($model, $form);
-        echo '<span id="send_success" class="send pl10 green hidden">'.\Yii::t('app','Відправлено').'</span>';
-        echo '<span id="send_error"   class="send pl10 red hidden">'.\Yii::t('app','Ошибка відправки').'</span>';
+        echo '<span id="send_success" class="send pt20 pl10 green hidden">'.\Yii::t('app','Відправлено').'</span>';
+        echo '<span id="send_error"   class="send pt20 pl10 red hidden">'.\Yii::t('app','Ошибка відправки').'</span>';
 
         ActiveForm::end();
 
@@ -73,11 +73,16 @@ class FeedbackForm extends Widget {
                         [
                             'class' => !empty($this->fieldsConfig["{$name}"]['class'])
                                 ?$this->fieldsConfig["{$name}"]['class']
-                                :'btn btn-submit-form center-block'
+                                :'btn btn-submit-form center-block pt20'
                         ]);
                     break;
                 case 'message':
                         $field = $form->field($model, "{$name}", [
+                            'options' => [
+                                'class' => !empty($this->fieldsConfig["{$name}"]['class'])
+                                    ?$this->fieldsConfig["{$name}"]['class']
+                                    :$this->class,
+                            ],
                             'template' => !empty($this->fieldsConfig["{$name}"]['template'])
                                 ?$this->fieldsConfig["{$name}"]['template']
                                 :$this->inputTemplate,
@@ -85,7 +90,6 @@ class FeedbackForm extends Widget {
                         ->textarea();
                     break;
                 default:
-                    //Tools::myPrintArray($this->fieldsConfig, '');exit;
                     $field = $form->field($model, "{$name}", [
                             'options' => [
                                 'class' => !empty($this->fieldsConfig["{$name}"]['class'])
