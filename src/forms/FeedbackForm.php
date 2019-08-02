@@ -56,9 +56,9 @@ class FeedbackForm extends Model {
      */
     public function attributeLabels() {
         return [
-            'name'         => 'Ваше имя*:',
+            'name'         => 'Ваше имя:',
             'company_name' => 'Компания:',
-            'tel'          => 'Телефон*:',
+            'tel'          => 'Телефон:',
             'email'        => 'E-mail:',
             'message'      => 'Заявка:'
         ];
