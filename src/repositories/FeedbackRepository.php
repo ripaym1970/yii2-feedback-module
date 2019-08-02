@@ -8,7 +8,7 @@
 
 namespace egor260890\feedback\repositories;
 
-use common\components\tools\Tools;
+//use common\components\tools\Tools;
 use egor260890\feedback\entities\Feedback;
 use egor260890\feedback\exceptions\NotFoundException;
 
@@ -27,8 +27,10 @@ class FeedbackRepository {
      */
     public function save(Feedback $feedback) {
         if (!$feedback->validate()) {
-            throw new \RuntimeException('Feedback. Validate error. ' . Tools::errorsToString($feedback->errors));
+            //throw new \RuntimeException('Feedback. Validate error. ' . Tools::errorsToString($feedback->errors));
+            throw new \RuntimeException('Feedback. Validate error.');
         }
+
         if (!$feedback->save()) {
             throw new \RuntimeException('Feedback. Saving error.');
         }
