@@ -29,6 +29,9 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
                 }
             },
             'columns' => [
+                [
+                    'class' => '\yii\grid\CheckboxColumn',
+                ],
                 'id',
                 'name',
                 'tel',
@@ -59,9 +62,6 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
                     'class' => 'yii\grid\ActionColumn',
                     'template' => '{view} {delete}'
                 ],
-                [
-                    'class' => '\yii\grid\CheckboxColumn',
-                ]
             ],
         ]);
         ?>
