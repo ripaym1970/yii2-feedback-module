@@ -2,6 +2,7 @@
 
 use yii\grid\GridView;
 use kartik\date\DatePicker;
+use yii\helpers\Html;
 use yii\widgets\Pjax;
 use egor260890\feedback\helpers\FeedbackHelper;
 use egor260890\feedback\entities\Feedback;
@@ -32,10 +33,29 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
                 [
                     'class' => '\yii\grid\CheckboxColumn',
                 ],
+                [
+                    'class' => 'yii\grid\ActionColumn',
+                    'template' => '{view}'
+                ],
                 'id',
                 'name',
                 'tel',
                 'email',
+                [
+                    'attribute' => 'email',
+                    'format' => 'raw',
+                    'value' => function($data) {
+                        return
+                            Html::a(
+                                'Оплатить',
+                                $data->email,
+                                [
+                                    'title' => 'Откроется окно отправки сообщзения',
+                                    'target' => '_blank'
+                                ]
+                            );
+                    },
+                ],
                 [
                     'attribute' => 'created_date',
                     'value' => function($model){
@@ -60,7 +80,7 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
                 ],
                 [
                     'class' => 'yii\grid\ActionColumn',
-                    'template' => '{view} {delete}'
+                    'template' => '{delete}'
                 ],
             ],
         ]);
