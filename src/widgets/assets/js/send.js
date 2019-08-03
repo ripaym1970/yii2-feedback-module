@@ -19,11 +19,11 @@ function registerFeedbackForm(id) {
             data:     data,
             success: function(res){
                 //console.log(res);
-                if (res === 'success') {
-                    $('#send_success').removeClass('hidden');
-                } else {
-                    $('#send_error').removeClass('hidden');
-                }
+                //if (res === 'success') {
+                //    $('#send_success').removeClass('hidden');
+                //} else {
+                //    $('#send_error').removeClass('hidden');
+                //}
                 $(this)[0].reset();
                 $('#'+id).trigger('send.feedback');
             },

@@ -3,31 +3,33 @@
  */
 $(document).on('pjax:complete', function() {
     $(function() {
-        $("#del-btn-feedback,#draft-btn-feedback,#activate-btn-feedback").on('click', function() {
+        $("#del-btn-feedback, #draft-btn-feedback, #activate-btn-feedback").on('click', function() {
             let url = $(this).data('url');
             if ($(this).attr('id') === 'del-btn' && !confirm('Подтвердите удаление')) {
                 return;
             }
             ajaxSend(url);
+
             return false;
         });
     });
 });
 
 $(function () {
-    $("#del-btn-feedback,#draft-btn-feedback,#activate-btn-feedback").on('click', function() {
+    $("#del-btn-feedback, #draft-btn-feedback, #activate-btn-feedback").on('click', function() {
         let url = $(this).data('url');
         if ($(this).attr('id') === 'del-btn' && !confirm('Подтвердите удаление')) {
             return;
         }
         ajaxSend(url);
+
         return false;
     });
 });
 
 function ajaxSend(url) {
     let keys = $('#w0').yiiGridView('getSelectedRows');
-    if (keys.length<1) {
+    if (keys.length < 1) {
         return;
     }
 
@@ -48,4 +50,3 @@ function ajaxSend(url) {
         }
     });
 }
-
