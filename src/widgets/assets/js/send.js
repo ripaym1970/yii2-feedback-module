@@ -19,11 +19,8 @@ function registerFeedbackForm(id) {
             data:     data,
             success: function(res){
                 //console.log(res);
-                //if (res === 'success') {
-                //    $('#send_success').removeClass('hidden');
-                //} else {
-                //    $('#send_error').removeClass('hidden');
-                //}
+                // Для обработки ответа надо на странице сделать подписку на
+                // $(document).ajaxSuccess(function(event, xhr, settings) {...});
                 $(this)[0].reset();
                 $('#'+id).trigger('send.feedback');
             },
