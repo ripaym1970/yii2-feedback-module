@@ -44,16 +44,16 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
                 [
                     'attribute' => 'email',
                     'format' => 'raw',
-                    'value' => function($data) {
-                        return
-                            Html::a(
-                                'Оплатить',
-                                $data->email,
-                                [
-                                    'title' => 'Откроется окно отправки сообщзения',
-                                    'target' => '_blank'
-                                ]
-                            );
+                    'value' => function ($data) {
+                        $link = Html::a($data->email, ['view', 'id' => $data->id], [
+                            'title' => $data->email,
+                            'data' => [
+                                'target' => '#myModal',
+                                'toggle' => 'modal',
+                                'backdrop' => 'static',
+                            ]
+                        ]);
+                        return $link;
                     },
                 ],
                 [
@@ -92,3 +92,12 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
 <button id="activate-btn-feedback" class="btn btn-success" data-url="<?=Yii::$app->urlManager->createUrl('/feedback/feedback/viewed-multiple')?>">В просмотренные</button>
 <button id="draft-btn-feedback" class="btn btn-primary" data-url="<?=Yii::$app->urlManager->createUrl('/feedback/feedback/unreviewed-multiple')?>">В непросмотренные</button>
 <button id="del-btn-feedback" class="btn btn-danger" data-url="<?=Yii::$app->urlManager->createUrl('/feedback/feedback/delete-multiple')?>">Удалить</button>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+
+<script>
+    $('body').on('hidden.bs.modal', '.modal', function () {
+        $(this).removeData('bs.modal');
+    });
+</script>
