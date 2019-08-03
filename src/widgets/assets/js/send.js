@@ -17,13 +17,15 @@ function registerFeedbackForm(id) {
             context:  this,
             dateType: 'json',
             data:     data,
+            // Для обработки ответа надо на странице сделать подписку на
+            // $(document).ajaxSuccess(function(event, xhr, settings) {...});
             success: function(res){
                 //console.log(res);
-                // Для обработки ответа надо на странице сделать подписку на
-                // $(document).ajaxSuccess(function(event, xhr, settings) {...});
                 $(this)[0].reset();
                 $('#'+id).trigger('send.feedback');
             },
+            // Для обработки ошибки надо на странице сделать подписку на
+            // $(document).ajaxError(function(event, xhr, settings) {...});
             error: function(err){
                 console.log(err);
             }
