@@ -37,7 +37,8 @@ class FeedbackController extends Controller {
                 'only'  => [
                     'delete-multiple',
                     'unreviewed-multiple',
-                    'viewed-multiple'
+                    'viewed-multiple',
+                    'send-reply',
                 ]
             ],
         ];
