@@ -41,9 +41,6 @@ class FeedbackForm extends Widget {
 
         $form = ActiveForm::begin($this->formConfig);
         echo $this->renderFields($model, $form);
-        echo '<span id="send_success" class="send pt20 pl10 green hidden">'.\Yii::t('app','Відправлено').'</span>';
-        echo '<span id="send_error"   class="send pt20 pl10 red hidden">'.\Yii::t('app','Ошибка відправки').'</span>';
-
         ActiveForm::end();
 
         $this->getView()->registerJs(new JsExpression("registerFeedbackForm(\"$this->id\")"));
