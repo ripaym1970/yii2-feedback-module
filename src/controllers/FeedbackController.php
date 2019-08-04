@@ -162,13 +162,15 @@ class FeedbackController extends Controller {
      * @return string
      * @throws BadRequestHttpException
      */
-    public function actionSendReply() {
-        if (Yii::$app->request->isAjax) {
-            //= Yii::$app->request->post();
-
-            return 'success';
-        }
-
-        throw new BadRequestHttpException('Bad request');
-    }
+    //public function actionSendReply() {
+    //    if (Yii::$app->request->isAjax) {
+    //        //$requestPost = Yii::$app->request->post();
+    //        //
+    //        //$note = new \frontend\models\UserWebNotification();
+    //
+    //        return 'success';
+    //    }
+    //
+    //    throw new BadRequestHttpException('Bad request');
+    //}
 }

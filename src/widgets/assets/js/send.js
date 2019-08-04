@@ -44,7 +44,7 @@ function registerFeedbackForm(id, url) {
             $.ajax({
                 //url:      '/feedback-send',
                 // Если на сайте используется интернационализация
-                url:      '/feedback/feedback/send-reply',
+                url:      '/user-web-notification/send-reply',
                 type:     'POST',
                 //context:  this,
                 dateType: 'json',
