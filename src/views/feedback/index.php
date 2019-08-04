@@ -151,6 +151,32 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
         $(".close").trigger('click');
     }, 3000);
 
+    // Подписываемся на jQuery-событие beforeValidate валидации формы
+    $('#feedback-form')
+    .on('beforeValidate',function() {
+        $('.send').addClass('hidden');
+    });
+
+    // Подписываемся на jQuery-событие success отправки сообщения
+    $(document).ajaxSuccess(function(event, xhr, settings) {
+        if (settings.url == '/'+document.getElementsByTagName('html')[0].getAttribute('lang')+'/feedback-send') {
+            let res = JSON.parse(xhr.responseText);
+            let btn = document.getElementById('btn-submit');
+            //console.log('btn=',btn);
+            let newSpan = document.createElement('span');
+
+            if (res === 'success') {
+                newSpan.className = 'send pt20 pl10 bold green';
+                newSpan.innerHTML = 'Відправлено';
+            } else {
+                newSpan.className = 'send pt20 pl10 bold red';
+                newSpan.innerHTML = 'Ошибка відправки';
+            }
+
+            insertAfter(newSpan, btn);
+        }
+    });
+
     // Открытие формы с отправкой письма особистості/користувачу
     function open_form(name, email) {
         $("#map-text").height(450);
@@ -165,4 +191,24 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
         $(this).removeData('bs.modal');
     });
 
+    /**
+     * Вставляет элемент insertedNode после referenceNode
+     *
+     * @param insertedNode
+     * @param referenceNode
+     */
+    function insertAfter(insertedNode, referenceNode ) {
+        if (!insertedNode || !referenceNode) {
+            return;
+        }
+
+        let parent      = referenceNode.parentNode;
+        let nextSibling = referenceNode.nextSibling;
+
+        if (nextSibling && parent) {
+            parent.insertBefore(insertedNode, referenceNode.nextSibling);
+        } else if (parent) {
+            parent.appendChild(insertedNode);
+        }
+    }
 </script>
