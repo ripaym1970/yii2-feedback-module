@@ -106,7 +106,7 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
                         return [
                             [['name'],    'required', 'message' => Yii::t('app','Необхідно заповнити'). ' "'.Yii::t('app','Ім’я').'"'],
                             [['email'],   'required', 'message' => Yii::t('app','Необхідно заповнити'). ' "'.Yii::t('app','E-mail').'"'],
-                            [['message'], 'required', 'message' => Yii::t('app','Необхідно заповнити'). ' "'.Yii::t('app','Питання').'"'],
+                            [['message'], 'required', 'message' => Yii::t('app','Необхідно заповнити'). ' "'.Yii::t('app','Відповідь').'"'],
                         ];
                     },
                     'fieldsConfig' => [ // Настройка полей
@@ -182,8 +182,8 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
         $("#map-text").height(450);
 
         $("#modal").modal('show').on('hide.bs.modal', function() {
-            $("#feedbackform-name").val(name);
-            $("#feedbackform-email").val(email);
+            $("#feedbackform-name").val(name).attr('value', name);
+            $("#feedbackform-email").val(email).attr('value', email);
         });
     }
 
