@@ -2,7 +2,7 @@
  * Created by User on 04.05.2018.
  */
 
-function registerFeedbackForm(id, url) {
+function registerFeedbackForm(id) {
     $('#'+id)
     //.on('beforeValidate',function() {
     //    console.log('url='+url);
