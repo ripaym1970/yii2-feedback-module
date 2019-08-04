@@ -179,12 +179,12 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
 
     // Открытие формы с отправкой письма особистості/користувачу
     function open_form(name, email) {
-        $("#map-text").height(450);
-
+        console.log('open_form');
         $("#modal").modal('show').on('hide.bs.modal', function() {
-            $("#feedbackform-name").val(name).attr('value', name);
-            $("#feedbackform-email").val(email).attr('value', email);
+            console.log('on.hide.bs.modal');
         });
+        $("#feedbackform-name").val(name).attr('value', name);
+        $("#feedbackform-email").val(email).attr('value', email);
     }
 
     $('body').on('hidden.bs.modal', '.modal', function () {
