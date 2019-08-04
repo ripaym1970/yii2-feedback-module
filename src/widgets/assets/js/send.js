@@ -2,7 +2,7 @@
  * Created by User on 04.05.2018.
  */
 
-function registerFeedbackForm(id) {
+function registerFeedbackForm2(id) {
     $('#'+id)
     //.on('beforeValidate',function() {
     //    console.log('url='+url);
@@ -36,7 +36,7 @@ function registerFeedbackForm(id) {
     });
 }
 
-function registerFeedbackForm2(id) {
+function registerFeedbackForm1(id) {
     $('#'+id)
     //.on('beforeValidate',function() {
     //    console.log('url='+url);
