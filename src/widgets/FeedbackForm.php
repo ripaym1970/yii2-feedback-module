@@ -68,6 +68,9 @@ class FeedbackForm extends Widget {
                             ?$this->fieldsConfig["{$name}"]['label']
                             :'Отправить',
                         [
+                            'id' => !empty($this->fieldsConfig["{$name}"]['id'])
+                                ?$this->fieldsConfig["{$name}"]['id']
+                                :null,
                             'class' => !empty($this->fieldsConfig["{$name}"]['class'])
                                 ?$this->fieldsConfig["{$name}"]['class']
                                 :'btn btn-submit-form center-block pt20'
