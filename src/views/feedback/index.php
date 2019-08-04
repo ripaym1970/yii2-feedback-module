@@ -130,6 +130,8 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
                             'class' => 'btn btn-warning',
                         ],
                     ],
+                    // Куда отправлять запрос
+                    'url' => '/feedback/feedback/send_reply',
                     'formConfig' => [
                         //'enableAjaxValidation'   => false,
                         //'enableClientValidation' => true,
@@ -137,7 +139,7 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
                         'options' => [
                             'class' => 'form-contact-us',
                         ],
-                    ]
+                    ],
                 ]);
                 ?>
             </div>

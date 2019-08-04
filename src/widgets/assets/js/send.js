@@ -2,7 +2,7 @@
  * Created by User on 04.05.2018.
  */
 
-function registerFeedbackForm(id) {
+function registerFeedbackForm(id, url) {
     $('#'+id)
     //.on('beforeValidate',function() {
     //    $('.send').addClass('hidden');
@@ -12,7 +12,7 @@ function registerFeedbackForm(id) {
         $.ajax({
             //url:      '/feedback-send',
             // Если на сайте используется интернационализация
-            url:      '/'+document.getElementsByTagName('html')[0].getAttribute('lang')+'/feedback-send',
+            url:      url?url:'/'+document.getElementsByTagName('html')[0].getAttribute('lang')+'/feedback-send',
             type:     'POST',
             context:  this,
             dateType: 'json',
