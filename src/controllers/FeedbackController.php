@@ -154,4 +154,20 @@ class FeedbackController extends Controller {
     public function actionTest() {
         return 'test';
     }
+
+    /**
+     * Отправляет ответ на вопрос сообщением или на почту если нет зарегистрированного с тако почтой
+     *
+     * @return string
+     * @throws BadRequestHttpException
+     */
+    public function actionSendReply() {
+        if (Yii::$app->request->isAjax) {
+            //= Yii::$app->request->post();
+
+            return 'success';
+        }
+
+        throw new BadRequestHttpException('Bad request');
+    }
 }

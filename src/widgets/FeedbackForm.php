@@ -45,7 +45,11 @@ class FeedbackForm extends Widget {
         echo $this->renderFields($model, $form);
         ActiveForm::end();
 
-        $this->getView()->registerJs(new JsExpression("registerFeedbackForm(\"$this->id\", \"$this->url\")"));
+        if ($this->url) {
+            $this->getView()->registerJs(new JsExpression("registerFeedbackForm2(\"$this->id\")"));
+        } else {
+            $this->getView()->registerJs(new JsExpression("registerFeedbackForm(\"$this->id\")"));
+        }
     }
 
     /**

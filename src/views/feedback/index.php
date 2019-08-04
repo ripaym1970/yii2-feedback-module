@@ -131,7 +131,7 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
                         ],
                     ],
                     // Куда отправлять запрос
-                    'url' => '/feedback/feedback/send_reply',
+                    'url' => true, //'/feedback/feedback/send_reply',
                     'formConfig' => [
                         //'enableAjaxValidation'   => false,
                         //'enableClientValidation' => true,
@@ -185,6 +185,7 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
         $("#modal").modal('show').on('hide.bs.modal', function() {
             console.log('on.hide.bs.modal');
         });
+
         $("#feedbackform-name").val(name).attr('value', name);
         $("#feedbackform-email").val(email).attr('value', email);
     }
