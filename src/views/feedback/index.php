@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
                     'attribute' => 'email',
                     'format' => 'raw',
                     'value' => function ($data) {
-                        return '<a href="" onClick="open_form('.$data->email.')">'.$data->email.'</a>';
+                        return '<a href="" onClick="open_form(\''.$data->email.'\')">'.$data->email.'</a>';
                     }
                 ],
                 [
