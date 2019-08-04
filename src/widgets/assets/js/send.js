@@ -39,8 +39,7 @@
 function registerFeedbackForm(id, url) {
     if (url) {
         $('#'+id)
-        .on('beforeSubmit', function(url) {
-            console.log('url='+url);
+        .on('beforeSubmit', function() {
             let data = $(this).serialize();
             $.ajax({
                 //url:      '/feedback-send',
@@ -70,21 +69,22 @@ function registerFeedbackForm(id, url) {
         //    console.log('url='+url);
         //    $('.send').addClass('hidden');
         //})
-        .on('beforeSubmit', function(url) {
-            console.log('url='+url);
+        .on('beforeSubmit', function() {
             let data = $(this).serialize();
             $.ajax({
                 //url:      '/feedback-send',
                 // Если на сайте используется интернационализация
-                url:      '/feedback/feedback/send_reply',
+                url:      '/'+document.getElementsByTagName('html')[0].getAttribute('lang')+'/feedback-send',
                 type:     'POST',
-                //context:  this,
+                context:  this,
                 dateType: 'json',
                 data:     data,
                 // Для обработки ответа надо на странице сделать подписку на
                 // $(document).ajaxSuccess(function(event, xhr, settings) {...});
                 success: function(res){
-                    console.log(res);
+                    //console.log(res);
+                    $(this)[0].reset();
+                    $('#'+id).trigger('send.feedback');
                 },
                 // Для обработки ошибки надо на странице сделать подписку на
                 // $(document).ajaxError(function(event, xhr, settings) {...});
