@@ -5,9 +5,11 @@
 function registerFeedbackForm(id, url) {
     $('#'+id)
     //.on('beforeValidate',function() {
+    //    console.log('url='+url);
     //    $('.send').addClass('hidden');
     //})
-    .on('beforeSubmit',function() {
+    .on('beforeSubmit', function(url) {
+        console.log('url='+url);
         let data = $(this).serialize();
         $.ajax({
             //url:      '/feedback-send',
