@@ -127,7 +127,7 @@ class FeedbackManageService implements ObservableInterface {
     }
 
     /**
-     * @param object|string|array $observers
+     * @param FeedbackObserverInterface $observers
      *
      * @return bool
      */
@@ -175,6 +175,11 @@ class FeedbackManageService implements ObservableInterface {
         }
     }
 
+    /**
+     * @param string $classname
+     *
+     * @return object
+     */
     private function createInstance(string $classname) {
         try {
             $class = new \ReflectionClass($classname);

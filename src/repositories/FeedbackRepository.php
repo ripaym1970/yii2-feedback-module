@@ -13,6 +13,11 @@ use egor260890\feedback\exceptions\NotFoundException;
 
 class FeedbackRepository {
 
+    /**
+     * @param $id
+     *
+     * @return Feedback
+     */
     public function get($id): Feedback {
         if (!$feedback = Feedback::findOne($id)) {
             throw new NotFoundException('Feedback is not found.');
