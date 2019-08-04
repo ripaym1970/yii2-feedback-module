@@ -46,9 +46,9 @@ class FeedbackForm extends Widget {
         ActiveForm::end();
 
         if ($this->url) {
-            $this->getView()->registerJs(new JsExpression("registerFeedbackForm1(\"$this->id\");"));
+            $this->getView()->registerJs(new JsExpression("registerFeedbackForm(\"$this->id\", true);"));
         } else {
-            $this->getView()->registerJs(new JsExpression("registerFeedbackForm2(\"$this->id\");"));
+            $this->getView()->registerJs(new JsExpression("registerFeedbackForm(\"$this->id\", false);"));
         }
     }
 
