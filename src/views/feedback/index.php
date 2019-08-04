@@ -173,7 +173,7 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
                 newSpan.innerHTML = 'Ошибка відправки';
             }
 
-            insertAfter(newSpan, btn);
+            btn.after(newSpan);
         }
     });
 
@@ -190,25 +190,4 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
     $('body').on('hidden.bs.modal', '.modal', function () {
         $(this).removeData('bs.modal');
     });
-
-    /**
-     * Вставляет элемент insertedNode после referenceNode
-     *
-     * @param insertedNode
-     * @param referenceNode
-     */
-    function insertAfter(insertedNode, referenceNode ) {
-        if (!insertedNode || !referenceNode) {
-            return;
-        }
-
-        let parent      = referenceNode.parentNode;
-        let nextSibling = referenceNode.nextSibling;
-
-        if (nextSibling && parent) {
-            parent.insertBefore(insertedNode, referenceNode.nextSibling);
-        } else if (parent) {
-            parent.appendChild(insertedNode);
-        }
-    }
 </script>
