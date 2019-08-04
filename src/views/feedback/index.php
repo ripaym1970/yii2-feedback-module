@@ -45,16 +45,8 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
                     'attribute' => 'email',
                     'format' => 'raw',
                     'value' => function ($data) {
-                        $link = Html::a($data->email, ['view', 'id' => $data->id], [
-                            'title' => $data->email,
-                            'data' => [
-                                'target' => '#myModal',
-                                'toggle' => 'modal',
-                                'backdrop' => 'static',
-                            ]
-                        ]);
-                        return $link;
-                    },
+                        return '<a href="" onClick="open_form('.$data->email.')">'.$data->email.'</a>';
+                    }
                 ],
                 [
                     'attribute' => 'created_date',
@@ -94,10 +86,40 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
 <button id="del-btn-feedback" class="btn btn-danger" data-url="<?=Yii::$app->urlManager->createUrl('/feedback/feedback/delete-multiple')?>">Удалить</button>
 
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+
+<div id="modal" class="modal" style="display: none; padding-right: 16px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title left fs10"></span>
+            </div>
+            <div class="modal-body">
+                <div id="mail-text" class="mb5">
+                    пропропропропропро
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
+    // Закрытие сообщений Alert
+    setTimeout(function() {
+        $(".close").trigger('click');
+    }, 3000);
+
+    // Открытие формы с отправкой письма особистості/користувачу
+    function open_form(el) {
+        $("#map-text").height(450);
+
+        $("#modal").modal('show').on('hide.bs.modal', function() {
+            $("#mail-text").text('');
+        });
+    }
+
     $('body').on('hidden.bs.modal', '.modal', function () {
         $(this).removeData('bs.modal');
     });
+
 </script>
