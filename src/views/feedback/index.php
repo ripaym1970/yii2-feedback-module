@@ -1,9 +1,8 @@
 <?php
 
-use yii\widgets\ActiveForm;
+use egor260890\feedback\widgets\FeedbackForm;
 use yii\grid\GridView;
 use kartik\date\DatePicker;
-use yii\helpers\Html;
 use yii\widgets\Pjax;
 use egor260890\feedback\helpers\FeedbackHelper;
 use egor260890\feedback\entities\Feedback;
@@ -46,7 +45,7 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
                     'attribute' => 'email',
                     'format' => 'raw',
                     'value' => function ($data) {
-                        return '<a href="" onClick="open_form(\''.$data->email.'\')">'.$data->email.'</a>';
+                        return '<a href="" onClick="open_form(\''.$data->name.'\',\''.$data->email.'\')">'.$data->email.'</a>';
                     }
                 ],
                 [
@@ -93,36 +92,54 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <span class="modal-title left fs10"></span>
+                <span class="modal-title left fs10">Відповідь на питання</span>
             </div>
             <div class="modal-body">
-                <div id="mail-text" class="mb5">
-                    пропропропропропро
-                </div>
-                <form id="feedback-form" class="form-contact-us" action="/uk/site/contact-us" method="post">
-                    <input type="hidden" name="_csrf-frontend" value="3PtBsE2qs0ZhcMZdNQJciM5PlbAjM0XkNC8RUuPwrxOXwyfyPfPBAQJJoA8FZW_4jSLc4hRXFolkHVM_lb32Rg=="><div class="input-wrapper field-feedbackform-name required has-success" autocomplete="off">
-                        <label class="control-label" for="feedbackform-name">Ім’я</label>
-                        <input type="text" id="feedbackform-name" class="form-control" name="FeedbackForm[name]" value="Dzidzio" aria-required="true" aria-invalid="false">
-
-                        <div class="help-block"></div>
-                    </div><div class="input-wrapper field-feedbackform-email required" autocomplete="off">
-                        <label class="control-label" for="feedbackform-email">E-mail</label>
-                        <input type="text" id="feedbackform-email" class="form-control" name="FeedbackForm[email]" value="ripaym@ukr.net" aria-required="true">
-
-                        <div class="help-block"></div>
-                    </div>
-
-                    <div class="input-wrapper pb20 field-feedbackform-message required has-error">
-                        <label class="control-label" for="feedbackform-message">Відповідь</label>
-                        <textarea id="feedbackform-message" class="form-control" name="FeedbackForm[message]" aria-required="true" aria-invalid="true"></textarea>
-
-                        <div class="help-block">Необхідно заповнити "Питання"</div>
-                    </div>
-
-                    <button type="submit" class="btn btn-warning">Відправити</button>
-                    <span id="send_success" class="send pt20 pl10 green hidden">Відправлено</span>
-                    <span id="send_error" class="send pt20 pl10 red hidden">Ошибка відправки</span>
-                </form>
+                <?php
+                echo FeedbackForm::widget([
+                    // Все поля из формы
+                    //'template' => '{name}{company_name}{tel}{email}{message}{button}',
+                    // Используемые поля из формы
+                    'template' => '{name}{email}{message}{button}',
+                    // Можно задать правила валидации
+                    'rules' => function(){
+                        return [
+                            [['name'],    'required', 'message' => Yii::t('app','Необхідно заповнити'). ' "'.Yii::t('app','Ім’я').'"'],
+                            [['email'],   'required', 'message' => Yii::t('app','Необхідно заповнити'). ' "'.Yii::t('app','E-mail').'"'],
+                            [['message'], 'required', 'message' => Yii::t('app','Необхідно заповнити'). ' "'.Yii::t('app','Питання').'"'],
+                        ];
+                    },
+                    'fieldsConfig' => [ // Настройка полей
+                        'name' => [
+                            'label' => Yii::t('app','Ім’я'),
+                            'class' => 'input-wrapper',
+                            'value' => '',
+                        ],
+                        'email' => [
+                            'label' => Yii::t('app','E-mail'),
+                            'class' => 'input-wrapper',
+                            'value' => '',
+                        ],
+                        'message' => [
+                            'label' => Yii::t('app','Відповідь'),
+                            //'placeholder' => 'please',
+                            'class' => 'input-wrapper pb20',
+                        ],
+                        'button' => [
+                            'label' => Yii::t('app','Відправити'),
+                            'class' => 'btn btn-warning',
+                        ],
+                    ],
+                    'formConfig' => [
+                        //'enableAjaxValidation'   => false,
+                        //'enableClientValidation' => true,
+                        //'validationUrl' => '/'.Yii::$app->language.'/site/validate-feedback',
+                        'options' => [
+                            'class' => 'form-contact-us',
+                        ],
+                    ]
+                ]);
+                ?>
             </div>
         </div>
     </div>
@@ -135,11 +152,12 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
     }, 3000);
 
     // Открытие формы с отправкой письма особистості/користувачу
-    function open_form(el) {
+    function open_form(name, email) {
         $("#map-text").height(450);
 
         $("#modal").modal('show').on('hide.bs.modal', function() {
-            $("#mail-text").text('');
+            $("#feedbackform-name").val(name);
+            $("#feedbackform-email").val(email);
         });
     }
 
