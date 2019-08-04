@@ -4,9 +4,9 @@
 
 function registerFeedbackForm(id) {
     $('#'+id)
-    .on('beforeValidate',function() {
-        $('.send').addClass('hidden');
-    })
+    //.on('beforeValidate',function() {
+    //    $('.send').addClass('hidden');
+    //})
     .on('beforeSubmit',function() {
         let data = $(this).serialize();
         $.ajax({
