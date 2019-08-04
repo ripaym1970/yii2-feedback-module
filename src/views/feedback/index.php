@@ -1,5 +1,6 @@
 <?php
 
+use yii\widgets\ActiveForm;
 use yii\grid\GridView;
 use kartik\date\DatePicker;
 use yii\helpers\Html;
@@ -98,6 +99,30 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
                 <div id="mail-text" class="mb5">
                     пропропропропропро
                 </div>
+                <form id="feedback-form" class="form-contact-us" action="/uk/site/contact-us" method="post">
+                    <input type="hidden" name="_csrf-frontend" value="3PtBsE2qs0ZhcMZdNQJciM5PlbAjM0XkNC8RUuPwrxOXwyfyPfPBAQJJoA8FZW_4jSLc4hRXFolkHVM_lb32Rg=="><div class="input-wrapper field-feedbackform-name required has-success" autocomplete="off">
+                        <label class="control-label" for="feedbackform-name">Ім’я</label>
+                        <input type="text" id="feedbackform-name" class="form-control" name="FeedbackForm[name]" value="Dzidzio" aria-required="true" aria-invalid="false">
+
+                        <div class="help-block"></div>
+                    </div><div class="input-wrapper field-feedbackform-email required" autocomplete="off">
+                        <label class="control-label" for="feedbackform-email">E-mail</label>
+                        <input type="text" id="feedbackform-email" class="form-control" name="FeedbackForm[email]" value="ripaym@ukr.net" aria-required="true">
+
+                        <div class="help-block"></div>
+                    </div>
+
+                    <div class="input-wrapper pb20 field-feedbackform-message required has-error">
+                        <label class="control-label" for="feedbackform-message">Відповідь</label>
+                        <textarea id="feedbackform-message" class="form-control" name="FeedbackForm[message]" aria-required="true" aria-invalid="true"></textarea>
+
+                        <div class="help-block">Необхідно заповнити "Питання"</div>
+                    </div>
+
+                    <button type="submit" class="btn btn-warning">Відправити</button>
+                    <span id="send_success" class="send pt20 pl10 green hidden">Відправлено</span>
+                    <span id="send_error" class="send pt20 pl10 red hidden">Ошибка відправки</span>
+                </form>
             </div>
         </div>
     </div>
