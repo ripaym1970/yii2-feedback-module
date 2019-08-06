@@ -150,10 +150,10 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
 </div>
 
 <script>
-    // Закрытие сообщений Alert
-    setTimeout(function() {
-        $(".close").trigger('click');
-    }, 3000);
+    //// Закрытие сообщений Alert
+    //setTimeout(function() {
+    //    $(".close").trigger('click');
+    //}, 3000);
 
     // Подписываемся на jQuery-событие beforeValidate валидации формы
     $('#feedback-form').on('beforeValidate',function() {
