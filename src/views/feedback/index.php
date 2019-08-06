@@ -91,7 +91,7 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" onClick="$('#modal').hide();$('.modal-body').html('');">
+                <button type="button" class="close" onClick="$('#modal').hide();">
                     <span>×</span>
                 </button>
                 <span class="modal-title left fs10">Відповідь на питання</span>
@@ -156,8 +156,7 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
     }, 3000);
 
     // Подписываемся на jQuery-событие beforeValidate валидации формы
-    $('#feedback-form')
-    .on('beforeValidate',function() {
+    $('#feedback-form').on('beforeValidate',function() {
         $('.send').addClass('hidden');
     });
 
