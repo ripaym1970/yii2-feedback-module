@@ -91,8 +91,8 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" onClick="$('#modal').hide();">
-                    <span>×</span>
+                <button id="btn-close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
                 </button>
                 <span class="modal-title left fs10">Відповідь на питання</span>
             </div>
