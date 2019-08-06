@@ -40,7 +40,6 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
                 'id',
                 'name',
                 'tel',
-                'email',
                 [
                     'attribute' => 'email',
                     'format' => 'raw',
@@ -92,6 +91,9 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <button type="button" class="close" onClick="$('#modal').hide();/* $('.modal-body').html('');*/">
+                    <span>×</span>
+                </button>
                 <span class="modal-title left fs10">Відповідь на питання</span>
             </div>
             <div class="modal-body">
