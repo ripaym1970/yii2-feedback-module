@@ -85,13 +85,13 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
 <button id="del-btn-feedback" class="btn btn-danger" data-url="<?=Yii::$app->urlManager->createUrl('/feedback/feedback/delete-multiple')?>">Удалить</button>
 
 
-<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+<!--<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>-->
 
 <div id="modal" class="modal" style="display: none; padding-right: 16px;">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" onClick="$('#modal').hide();/* $('.modal-body').html('');*/">
+                <button type="button" class="close" onClick="$('#modal').hide();$('.modal-body').html('');">
                     <span>×</span>
                 </button>
                 <span class="modal-title left fs10">Відповідь на питання</span>
@@ -192,7 +192,7 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
         $("#feedbackform-email").val(email).attr('value', email);
     }
 
-    $('body').on('hidden.bs.modal', '.modal', function () {
-        $(this).removeData('bs.modal');
-    });
+    //$('body').on('hidden.bs.modal', '.modal', function () {
+    //    $(this).removeData('bs.modal');
+    //});
 </script>
