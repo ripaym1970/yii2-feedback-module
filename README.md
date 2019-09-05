@@ -102,3 +102,17 @@ class Observer implements FeedbackObserverInterface{
         ],
     ],
 ```
+
+Коммит и заливка на Git
+-----------------------
+1. Проверить ветку - должна быть "fix"
+2. Выполнить commit изменений
+3. Выполнить 
+```
+git push origin fix
+```
+4. На личном/релизе в проекте выполнить
+```
+composer update --ignore-platform-reqs
+```
+
