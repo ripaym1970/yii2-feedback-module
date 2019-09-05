@@ -10,6 +10,7 @@ namespace egor260890\feedback\forms;
 
 use egor260890\feedback\entities\Feedback;
 //use egor260890\feedback\validators\PhoneValidator;
+use Yii;
 use yii\base\Model;
 
 class FeedbackForm extends Model {
@@ -26,7 +27,7 @@ class FeedbackForm extends Model {
         //['tel', PhoneValidator::class],
         [['name', 'email'], 'string', 'max' => 100],
         ['message', 'string', 'max' => 1000],
-        ['email', 'email', 'message' => 'Неправильный e-mail'],
+        //['email', 'email', 'message' => Yii::t('app','Невалідний E-mail')],
     ];
 
     public function __construct(Feedback $feedback=null, $config=[]) {
@@ -44,7 +45,7 @@ class FeedbackForm extends Model {
     }
 
     public function rules() {
-        return $this->rules;
+        return $this->rules + ['email', 'email', 'message' => Yii::t('app','Невалідний E-mail')];
     }
 
     public function addRules(array $rule) {
@@ -56,11 +57,11 @@ class FeedbackForm extends Model {
      */
     public function attributeLabels() {
         return [
-            'name'         => 'Ваше имя:',
-            'company_name' => 'Компания:',
-            'tel'          => 'Телефон:',
-            'email'        => 'E-mail:',
-            'message'      => 'Заявка:'
+            'name'         => Yii::t('app','Ваше ім’я:'),
+            'company_name' => Yii::t('app','Компанія:'),
+            'tel'          => Yii::t('app','Телефон:'),
+            'email'        => Yii::t('app','E-mail:'),
+            'message'      => Yii::t('app','Заявка:'),
         ];
     }
 
