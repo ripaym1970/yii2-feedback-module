@@ -45,7 +45,7 @@ class FeedbackForm extends Model {
     }
 
     public function rules() {
-        return $this->rules + ['email', 'email', 'message' => Yii::t('app','Невалідний E-mail')];
+        return array_merge($this->rules, ['email', 'email', 'message' => Yii::t('app','Невалідний E-mail')]);
     }
 
     public function addRules(array $rule) {
