@@ -27,7 +27,7 @@ class FeedbackForm extends Model {
         //['tel', PhoneValidator::class],
         [['name', 'email'], 'string', 'max' => 100],
         ['message', 'string', 'max' => 1000],
-        //['email', 'email', 'message' => Yii::t('app','Невалідний E-mail')],
+        ['email', 'email', 'message' => 'Невалідний E-mail'],
     ];
 
     public function __construct(Feedback $feedback=null, $config=[]) {
@@ -45,7 +45,8 @@ class FeedbackForm extends Model {
     }
 
     public function rules() {
-        return array_merge($this->rules, ['email', 'email', 'message' => Yii::t('app','Невалідний E-mail')]);
+        return $this->rules;
+        //return array_merge($this->rules, ['email', 'email', 'message' => Yii::t('app','Невалідний E-mail')]);
     }
 
     public function addRules(array $rule) {
