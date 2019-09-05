@@ -26,8 +26,8 @@ class FeedbackForm extends Model {
         [['tel', 'company_name'], 'string'],
         //['tel', PhoneValidator::class],
         [['name', 'email'], 'string', 'max' => 100],
-        ['message', 'string', 'max' => 1000],
-        ['email', 'email', 'message' => 'Невалідний E-mail'],
+        [['message'], 'string', 'max' => 1000],
+        [['email'], 'email', 'message' => 'Невалідний E-mail'],
     ];
 
     public function __construct(Feedback $feedback=null, $config=[]) {
