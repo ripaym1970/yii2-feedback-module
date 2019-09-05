@@ -50,7 +50,7 @@ class FeedbackForm extends Model {
     }
 
     public function addRules(array $rule) {
-        $this->rules = array_merge($rule, $this->rules);
+        $this->rules = array_merge($this->rules, $rule);
     }
 
     /**
@@ -58,11 +58,16 @@ class FeedbackForm extends Model {
      */
     public function attributeLabels() {
         return [
-            'name'         => Yii::t('app','Ваше ім’я:'),
-            'company_name' => Yii::t('app','Компанія:'),
-            'tel'          => Yii::t('app','Телефон:'),
-            'email'        => Yii::t('app','E-mail:'),
-            'message'      => Yii::t('app','Заявка:'),
+            //'name'         => Yii::t('app','Ваше ім’я:'),
+            //'company_name' => Yii::t('app','Компанія:'),
+            //'tel'          => Yii::t('app','Телефон:'),
+            //'email'        => Yii::t('app','E-mail:'),
+            //'message'      => Yii::t('app','Заявка:'),
+            'name'         => 'Ваше ім’я:',
+            'company_name' => 'Компанія:',
+            'tel'          => 'Телефон:',
+            'email'        => 'E-mail:',
+            'message'      => 'Заявка:',
         ];
     }
 
