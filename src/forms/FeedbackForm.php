@@ -27,7 +27,7 @@ class FeedbackForm extends Model {
         //['tel', PhoneValidator::class],
         [['name', 'email'], 'string', 'max' => 100],
         ['message', 'string', 'max' => 1000],
-        ['email', 'email', 'message' => 'Невалідний E-mail'],
+        ['email', 'email', 'message' => '1 Невалідний E-mail'],
     ];
 
     public function __construct(Feedback $feedback=null, $config=[]) {
@@ -50,7 +50,7 @@ class FeedbackForm extends Model {
     }
 
     public function addRules(array $rule) {
-        $this->rules = array_merge($this->rules, $rule);
+        $this->rules = array_merge($rule, $this->rules);
     }
 
     /**
