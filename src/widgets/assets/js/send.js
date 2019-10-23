@@ -37,8 +37,8 @@
 //}
 
 function registerFeedbackForm(id, url) {
+    console.log('url='+url);
     if (url) {
-        console.log('url='+url);
         $('#'+id)
         .on('beforeSubmit', function() {
             let data = $(this).serialize();
