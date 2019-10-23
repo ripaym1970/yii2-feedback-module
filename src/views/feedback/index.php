@@ -133,7 +133,7 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
                         ],
                     ],
                     // Куда отправлять запрос
-                    'url' => true, //'/feedback/feedback/send_reply',
+                    'url' => '/feedback/feedback/send_reply',
                     'formConfig' => [
                         //'enableAjaxValidation'   => false,
                         //'enableClientValidation' => true,
