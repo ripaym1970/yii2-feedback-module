@@ -42,9 +42,8 @@ function registerFeedbackForm(id, url) {
         .on('beforeSubmit', function() {
             let data = $(this).serialize();
             $.ajax({
-                //url:      '/feedback-send',
                 // Если на сайте используется интернационализация
-                url:      '/userweb/user-web-notification/send-reply',
+                url:      url,
                 type:     'POST',
                 //context:  this,
                 dateType: 'json',
