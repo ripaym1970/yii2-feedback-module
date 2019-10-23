@@ -158,11 +158,13 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
 
     // Подписываемся на jQuery-событие success отправки сообщения
     $(document).ajaxSuccess(function(event, xhr, settings) {
-        console.log('xhr=',xhr);
+        console.log('xhr=',xhr.responseText);
         console.log('settings=',settings);
-        console.log('/'+document.getElementsByTagName('html')[0].getAttribute('lang')+'/send_reply');
+        console.log('settings.url=',settings.url);
+        //console.log('/'+document.getElementsByTagName('html')[0].getAttribute('lang')+'/send_reply');
         //if (settings.url === '/'+document.getElementsByTagName('html')[0].getAttribute('lang')+'/feedback-send') {
-        if (settings.url === '/feedback/feedback/send_reply') {
+        //if (settings.url === '/feedback/feedback/send_reply') {
+        if (settings.url === 'https://dzyga.pro/feedback/feedback/index') {
             let res = JSON.parse(xhr.responseText);
             let btn = document.getElementById('btn-submit');
             //console.log('btn=',btn);
