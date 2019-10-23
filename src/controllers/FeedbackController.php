@@ -175,7 +175,7 @@ class FeedbackController extends Controller {
                 ->setHtmlBody(
 $requestPost['FeedbackForm']['name'].', дякуємо за звернення.<br>
 Повідомляємо, що:<br>'
-. $requestPost['FeedbackForm']['name']
+. $requestPost['FeedbackForm']['message']
 . '<br>Модератор'
 )
                 ->send();

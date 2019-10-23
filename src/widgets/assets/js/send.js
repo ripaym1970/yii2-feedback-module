@@ -37,7 +37,7 @@
 //}
 
 function registerFeedbackForm(id, url) {
-    console.log('url='+url);
+    //console.log('url='+url);
     if (url) {
         $('#'+id)
         .on('beforeSubmit', function() {
