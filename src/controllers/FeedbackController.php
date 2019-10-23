@@ -162,15 +162,27 @@ class FeedbackController extends Controller {
      * @return string
      * @throws BadRequestHttpException
      */
-    //public function actionSendReply() {
-    //    if (Yii::$app->request->isAjax) {
-    //        //$requestPost = Yii::$app->request->post();
-    //        //
-    //        //$note = new \frontend\models\UserWebNotification();
-    //
-    //        return 'success';
-    //    }
-    //
-    //    throw new BadRequestHttpException('Bad request');
-    //}
+    public function actionSendReply() {
+        if (Yii::$app->request->isAjax) {
+            $requestPost = Yii::$app->request->post();
+
+            $isSend = Yii::$app->mailer
+                ->compose()
+                ->setFrom('no-reply@dzygamdb.com')
+                //->setTo('editor@dzygamdb.com')
+                ->setTo($requestPost['FeedbackForm']['email'])
+                ->setSubject('DzygaMDB.com: Відповідь на ваше питання')
+                ->setHtmlBody(
+$requestPost['FeedbackForm']['name'].', дякуємо за звернення.<br>
+Повідомляємо, що:<br>'
+. $requestPost['FeedbackForm']['name']
+. '<br>Модератор'
+)
+                ->send();
+
+            return $isSend?'success':'error';
+        }
+
+        throw new BadRequestHttpException('Bad request');
+    }
 }
