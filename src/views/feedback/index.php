@@ -135,6 +135,7 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
                     // Куда отправлять запрос
                     'url' => '/feedback/feedback/send_reply',
                     'formConfig' => [
+                        'action' => '/feedback/feedback/send_reply',
                         //'enableAjaxValidation'   => false,
                         //'enableClientValidation' => true,
                         //'validationUrl' => '/'.Yii::$app->language.'/site/validate-feedback',

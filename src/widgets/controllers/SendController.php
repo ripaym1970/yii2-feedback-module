@@ -45,6 +45,7 @@ class SendController extends \yii\web\Controller {
      */
     public function actionIndex() {
         \Yii::$app->response->format = 'json';
+
         $form = new FeedbackForm();
         if (!$form->load($this->request->post())) {
             throw new BadRequestHttpException('Bad request');
@@ -61,6 +62,6 @@ class SendController extends \yii\web\Controller {
             return 'Save error (message in ru language) => /frontend/runtime/logs/app.log';
         }
 
-        return 'success22222222';
+        return 'success';
     }
 }
