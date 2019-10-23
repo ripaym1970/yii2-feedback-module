@@ -18,14 +18,14 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
 
 <div class="feedback-index">
     <?php
-    //Pjax::begin(['id' => 'pjax-content']);
+    Pjax::begin(['id' => 'pjax-content']);
     ?>
         <?php
         echo GridView::widget([
             'id' => 'w0',
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
-            'rowOptions' => function(Feedback $model){
+            'rowOptions' => function(Feedback $model) {
                 if ($model->isUnreviewed()){
                     return ['class' => 'danger'];
                 }
@@ -78,7 +78,7 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
         ]);
         ?>
     <?php
-    //Pjax::end();
+    Pjax::end();
     ?>
 </div>
 
