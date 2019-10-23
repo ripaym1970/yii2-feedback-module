@@ -61,6 +61,6 @@ class SendController extends \yii\web\Controller {
             return 'Save error (message in ru language) => /frontend/runtime/logs/app.log';
         }
 
-        return 'success';
+        return 'success22222222';
     }
 }
