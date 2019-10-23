@@ -157,6 +157,7 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
 
     // Подписываемся на jQuery-событие success отправки сообщения
     $(document).ajaxSuccess(function(event, xhr, settings) {
+        console.log('xhr=',xhr);
         console.log('settings=',settings);
         console.log('/'+document.getElementsByTagName('html')[0].getAttribute('lang')+'/send_reply');
         //if (settings.url === '/'+document.getElementsByTagName('html')[0].getAttribute('lang')+'/feedback-send') {
