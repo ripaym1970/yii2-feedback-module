@@ -150,11 +150,6 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
 </div>
 
 <script>
-    //// Закрытие сообщений Alert
-    //setTimeout(function() {
-    //    $(".close").trigger('click');
-    //}, 3000);
-
     // Подписываемся на jQuery-событие beforeValidate валидации формы
     $('#feedback-form').on('beforeValidate',function() {
         $('.send').addClass('hidden');
@@ -162,7 +157,9 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
 
     // Подписываемся на jQuery-событие success отправки сообщения
     $(document).ajaxSuccess(function(event, xhr, settings) {
-        if (settings.url === '/'+document.getElementsByTagName('html')[0].getAttribute('lang')+'/feedback-send') {
+        console.log('settings=',settings);
+        //if (settings.url === '/'+document.getElementsByTagName('html')[0].getAttribute('lang')+'/feedback-send') {
+        if (settings.url === '/feedback/feedback/feedback-send') {
             let res = JSON.parse(xhr.responseText);
             let btn = document.getElementById('btn-submit');
             //console.log('btn=',btn);
