@@ -162,9 +162,26 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
     $(document).ajaxSuccess(function(event, xhr, settings) {
         //console.log(settings.url);
         if (settings.url === '/feedback/feedback/send-reply') {
+            console.log(xhr);
+            console.log(xhr.responseText);
+            //let res = JSON.parse(xhr.responseText);
+            //
+            //let btn = document.getElementById('btn-submit');
+            ////console.log('btn=',btn);
+            //let newSpan = document.createElement('span');
+            //
+            //if (res === 'success') {
+            //    newSpan.className = 'send pt20 pl10 bold green';
+            //    newSpan.innerHTML = 'Відправлено';
+            //} else {
+            //    newSpan.className = 'send pt20 pl10 bold red';
+            //    newSpan.innerHTML = 'Ошибка відправки';
+            //}
+            //
+            //btn.after(newSpan);
+        } else if (settings.url === '/'+document.getElementsByTagName('html')[0].getAttribute('lang')+'/feedback-send') {
             let res = JSON.parse(xhr.responseText);
             let btn = document.getElementById('btn-submit');
-            //console.log('btn=',btn);
             let newSpan = document.createElement('span');
 
             if (res === 'success') {
