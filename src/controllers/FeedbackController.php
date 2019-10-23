@@ -173,10 +173,10 @@ class FeedbackController extends Controller {
                 ->setTo($requestPost['FeedbackForm']['email'])
                 ->setSubject('DzygaMDB.com: Відповідь на ваше питання')
                 ->setHtmlBody(
-$requestPost['FeedbackForm']['name'].', дякуємо за звернення.<br>
+$requestPost['FeedbackForm']['name'].', дякуємо за звернення.<br><br>
 Повідомляємо, що:<br>'
 . $requestPost['FeedbackForm']['message']
-. '<br>Модератор'
+. '<br><br>Модератор'
 )
                 ->send();
 
