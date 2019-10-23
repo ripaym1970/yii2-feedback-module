@@ -170,6 +170,7 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
             if (res === 'success') {
                 newSpan.className = 'send pt20 pl10 bold green';
                 newSpan.innerHTML = 'Відправлено';
+                document.getElementById('feedbackform-message').value = '';
             } else {
                 newSpan.className = 'send pt20 pl10 bold red';
                 newSpan.innerHTML = 'Ошибка відправки';
