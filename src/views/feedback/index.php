@@ -18,7 +18,8 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
 
 <div class="feedback-index">
     <?php
-    Pjax::begin(['id' => 'pjax-content']); ?>
+    //Pjax::begin(['id' => 'pjax-content']);
+    ?>
         <?php
         echo GridView::widget([
             'id' => 'w0',
@@ -77,7 +78,8 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
         ]);
         ?>
     <?php
-    Pjax::end(); ?>
+    //Pjax::end();
+    ?>
 </div>
 
 <button id="activate-btn-feedback" class="btn btn-success" data-url="<?=Yii::$app->urlManager->createUrl('/feedback/feedback/viewed-multiple')?>">В просмотренные</button>
