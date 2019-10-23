@@ -53,6 +53,19 @@ function registerFeedbackForm(id, url) {
                 // $(document).ajaxSuccess(function(event, xhr, settings) {...});
                 success: function(res){
                     console.log(res);
+                    //let btn = document.getElementById('btn-submit');
+                    ////console.log('btn=',btn);
+                    //let newSpan = document.createElement('span');
+                    //
+                    //if (res === 'success') {
+                    //    newSpan.className = 'send pt20 pl10 bold green';
+                    //    newSpan.innerHTML = 'Відправлено';
+                    //} else {
+                    //    newSpan.className = 'send pt20 pl10 bold red';
+                    //    newSpan.innerHTML = 'Ошибка відправки';
+                    //}
+                    //
+                    //btn.after(newSpan);
                 },
                 // Для обработки ошибки надо на странице сделать подписку на
                 // $(document).ajaxError(function(event, xhr, settings) {...});

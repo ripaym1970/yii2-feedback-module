@@ -160,8 +160,8 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
 
     // Подписываемся на jQuery-событие success отправки сообщения
     $(document).ajaxSuccess(function(event, xhr, settings) {
-        console.log(settings.url);
-        if (settings.url === 'https://dzyga.pro/feedback/feedback/send-reply') {
+        //console.log(settings.url);
+        if (settings.url === '/feedback/feedback/send-reply') {
             let res = JSON.parse(xhr.responseText);
             let btn = document.getElementById('btn-submit');
             //console.log('btn=',btn);
