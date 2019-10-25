@@ -8,6 +8,7 @@
 
 namespace egor260890\feedback\controllers;
 
+use egor260890\feedback\entities\Feedback;
 use nickdenry\grid\toggle\actions\ToggleAction;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
@@ -189,6 +190,14 @@ $requestPost['FeedbackForm']['name'].', дякуємо за звернення.<
 . '<br><br>Модератор'
 )
                 ->send();
+
+            if ($isSend) {
+                $feedback = Feedback::findOne(['email' => $requestPost['FeedbackForm']['email']]);
+                if ($feedback) {
+                    $feedback->is_send = true;
+                    $feedback->save(false);
+                }
+            }
 
             return $isSend?'success':'error';
         }
