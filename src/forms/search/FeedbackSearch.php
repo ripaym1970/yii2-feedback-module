@@ -20,6 +20,7 @@ class FeedbackSearch extends Model {
     private $email;
     private $created_date;
     private $status;
+    private $is_send;
     private $company_name;
 
     /**
@@ -27,9 +28,10 @@ class FeedbackSearch extends Model {
      */
     public function rules() {
         return [
-            [['id','status'], 'integer'],
-            [['created_date','email','company_name'],'string'],
-            [['name', 'tel', 'created_date','status','email'], 'safe'],
+            [['id', 'status'], 'integer'],
+            [['is_send'], 'boolean'],
+            [['created_date', 'email', 'company_name'],'string'],
+            [['name', 'tel', 'created_date', 'status', 'email'], 'safe'],
         ];
     }
 
@@ -69,8 +71,9 @@ class FeedbackSearch extends Model {
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id'     => $this->id,
-            'status' => $this->status,
+            'id'      => $this->id,
+            'status'  => $this->status,
+            'is_send' => $this->is_send,
         ]);
 
         $query
