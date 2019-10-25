@@ -30,7 +30,7 @@ class FeedbackSearch extends Model {
         return [
             [['id', 'status'], 'integer'],
             [['is_send'], 'boolean'],
-            [['created_date', 'email', 'company_name'],'string'],
+            [['created_date', 'email', 'company_name'], 'string'],
             [['name', 'tel', 'created_date', 'status', 'email'], 'safe'],
         ];
     }
@@ -39,7 +39,6 @@ class FeedbackSearch extends Model {
      * @inheritdoc
      */
     public function scenarios() {
-        // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
 
@@ -53,7 +52,6 @@ class FeedbackSearch extends Model {
     public function search($params) {
         $query = Feedback::find();
 
-        // add conditions that should always apply here
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort' => [
@@ -64,8 +62,7 @@ class FeedbackSearch extends Model {
         $this->load($params);
 
         if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            $query->where('0=1');
+            //$query->where('0=1');
             return $dataProvider;
         }
 
@@ -118,6 +115,13 @@ class FeedbackSearch extends Model {
 
     public function setCreated_date($created_date) {
         $this->created_date = $created_date;
+    }
+    public function getIs_send() {
+        return $this->is_send;
+    }
+
+    public function setIs_send($is_send) {
+        $this->is_send = $is_send;
     }
 
     public function getStatus() {
