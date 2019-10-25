@@ -22,6 +22,8 @@ use yii\db\ActiveRecord;
  * @property string $company_name
  * @property string $created_date
  * @property integer $status
+ * @property integer $is_send;
+ *
  */
 class Feedback extends ActiveRecord implements FeedbackInterface {
 
@@ -46,6 +48,7 @@ class Feedback extends ActiveRecord implements FeedbackInterface {
             'company_name' => 'Название компании',
             'tel'          => 'Телефон',
             'status'       => 'Статус',
+            'is_send'      => 'Відповідь',
             'created_date' => 'Дата создания',
             'email'        => 'E-mail',
             'message'      => 'Сообщение'
