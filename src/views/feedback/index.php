@@ -1,9 +1,11 @@
 <?php
 
+use nickdenry\grid\toggle\components\RoundSwitchColumn;
 use egor260890\feedback\widgets\FeedbackForm;
 use yii\grid\GridView;
 use kartik\date\DatePicker;
 use yii\widgets\Pjax;
+use yii\helpers\Html;
 use egor260890\feedback\helpers\FeedbackHelper;
 use egor260890\feedback\entities\Feedback;
 
@@ -47,6 +49,18 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
                     'value' => function ($data) {
                         return '<a href="javascript:void(0)" onClick="open_form(\''.$data->name.'\',\''.$data->email.'\')">'.$data->email.'</a>';
                     }
+                ],
+                [
+                    'class' => RoundSwitchColumn::class,
+                    'attribute' => 'is_send',
+                    /* other column options, i.e. */
+                    'filter' => Html::activeDropDownList(
+                        $searchModel,
+                        'is_send',
+                        ['' => 'Всі', 0 => 'Ні', 1 => 'Так'],
+                        ['class' => 'form-control', 'style' => 'padding:6px 2px;width:70px;']
+                    ),
+                    'headerOptions' => ['width' => '70px'],
                 ],
                 [
                     'attribute' => 'created_date',

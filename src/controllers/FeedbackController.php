@@ -8,6 +8,7 @@
 
 namespace egor260890\feedback\controllers;
 
+use nickdenry\grid\toggle\actions\ToggleAction;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use egor260890\feedback\forms\search\FeedbackSearch;
@@ -57,6 +58,15 @@ class FeedbackController extends Controller {
     public function __construct($id, Module $module, array $config=[], FeedbackManageService $feedbackManageService) {
         $this->feedbackManageService = $feedbackManageService;
         parent::__construct($id, $module, $config);
+    }
+
+    public function actions() {
+        return [
+            'toggle' => [
+                'class' => ToggleAction::class,
+                'modelClass' => 'egor260890\feedback\entities\Feedback', // Your model class
+            ],
+        ];
     }
 
     /**
