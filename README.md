@@ -116,3 +116,9 @@ git push origin fix
 composer update --ignore-platform-reqs
 ```
 
+Теперь сделаем так, чтобы корректно работал IDE без установки Yii2 в расширение.
+Для этого необходимо в каталоге свиджетом добавить «symbolic link» на vendor
+```
+mklink /D C:\OSPanel\domains\yii2-feedback-module\vendor C:\OSPanel\domains\adv.loc\vendor
+```
+Заметка: Для того, чтобы проверить работоспособность созданных «symbolic link» необходимо «двойным щелчком левой кнопки мыши» кликнуть по каждому из них. Если переход в соотвествующие каталоги (файлы) произошел успешно – то соответственно Вы создали корректные «symbolic link». 

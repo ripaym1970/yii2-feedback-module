@@ -53,6 +53,7 @@ function registerFeedbackForm(id, url) {
                 // $(document).ajaxSuccess(function(event, xhr, settings) {...});
                 success: function(res){
                     console.log(res);
+                    dataLayer.push({'event': 'Svyajutes_s_nami'});
                 },
                 // Для обработки ошибки надо на странице сделать подписку на
                 // $(document).ajaxError(function(event, xhr, settings) {...});

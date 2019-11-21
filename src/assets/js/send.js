@@ -5,7 +5,7 @@ $(document).on('pjax:complete', function() {
     $(function() {
         $("#del-btn-feedback, #draft-btn-feedback, #activate-btn-feedback").on('click', function() {
             let url = $(this).data('url');
-            if ($(this).attr('id') === 'del-btn' && !confirm('Подтвердите удаление')) {
+            if ($(this).attr('id') === 'del-btn-feedback' && !confirm('Подтвердите удаление')) {
                 return;
             }
             ajaxSend(url);
@@ -18,7 +18,7 @@ $(document).on('pjax:complete', function() {
 $(function () {
     $("#del-btn-feedback, #draft-btn-feedback, #activate-btn-feedback").on('click', function() {
         let url = $(this).data('url');
-        if ($(this).attr('id') === 'del-btn' && !confirm('Подтвердите удаление')) {
+        if ($(this).attr('id') === 'del-btn-feedback' && !confirm('Подтвердите удаление')) {
             return;
         }
         ajaxSend(url);
@@ -41,8 +41,10 @@ function ajaxSend(url) {
             keys:keys
         },
         success: function(res){
+            //dataLayer.push({'event': 'Svyajutes_s_nami'});
+
             $.pjax.reload({
-                container:'#pjax-content'
+                container: '#pjax-content'
             });
         },
         error: function(err){
