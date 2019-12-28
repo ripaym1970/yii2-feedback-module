@@ -68,7 +68,7 @@ class FeedbackForm extends Widget {
 
             switch ($name){
                 case 'button':
-                    //Tools::myPrintArray($this->fieldsConfig, '');exit;
+                    //dd($this->fieldsConfig, '');
                     return Html::submitButton(
                         !empty($this->fieldsConfig["{$name}"]['label'])
                             ?$this->fieldsConfig["{$name}"]['label']
@@ -93,7 +93,9 @@ class FeedbackForm extends Widget {
                                 ?$this->fieldsConfig["{$name}"]['template']
                                 :$this->inputTemplate,
                         ])
-                        ->textarea();
+                        ->textarea([
+                            'rows' => 8,
+                        ]);
                     break;
                 default:
                     $field = $form->field($model, "{$name}", [
