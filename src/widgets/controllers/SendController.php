@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: User
- * Date: 04.05.2018
- * Time: 9:29
- */
 
 namespace egor260890\feedback\widgets\controllers;
 
@@ -18,11 +12,11 @@ use yii\web\BadRequestHttpException;
 class SendController extends \yii\web\Controller {
 
     private $service;
-    private $request;
+    private $myrequest;
 
     public function __construct($id, Module $module, FeedbackManageService $service, array $config = []) {
         $service->attachMany(\Yii::$app->getModule('feedback-send')->observers ? : null);
-        $this->request = \Yii::$app->request;
+        $this->myrequest = \Yii::$app->request;
         $this->service = $service;
 
         parent::__construct($id, $module, $config);
@@ -47,7 +41,7 @@ class SendController extends \yii\web\Controller {
         \Yii::$app->response->format = 'json';
 
         $form = new FeedbackForm();
-        if (!$form->load($this->request->post())) {
+        if (!$form->load($this->myrequest->post())) {
             throw new BadRequestHttpException('Bad request');
         }
 

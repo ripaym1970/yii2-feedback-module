@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: User
- * Date: 25.02.2018
- * Time: 14:25
- */
 
 namespace egor260890\feedback\repositories;
 

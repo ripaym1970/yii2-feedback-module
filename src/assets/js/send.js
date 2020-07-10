@@ -1,6 +1,3 @@
-/**
- * Created by User on 25.11.2017.
- */
 $(document).on('pjax:complete', function() {
     $(function() {
         $("#del-btn-feedback, #draft-btn-feedback, #activate-btn-feedback").on('click', function() {

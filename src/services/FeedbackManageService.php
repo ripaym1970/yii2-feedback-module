@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: User
- * Date: 26.02.2018
- * Time: 13:36
- */
 
 namespace egor260890\feedback\services;
 

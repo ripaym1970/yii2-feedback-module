@@ -1,12 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: User
- * Date: 03.05.2018
- * Time: 15:20
- */
-
 namespace egor260890\feedback;
 
 use egor260890\feedback\assets\Assets;

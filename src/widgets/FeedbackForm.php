@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: User
- * Date: 04.05.2018
- * Time: 8:45
- */
 
 namespace egor260890\feedback\widgets;
 

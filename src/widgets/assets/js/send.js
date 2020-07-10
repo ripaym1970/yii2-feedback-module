@@ -1,7 +1,3 @@
-/**
- * Created by User on 04.05.2018.
- */
-
 //function registerFeedbackForm(id) {
 //    $('#'+id)
 //    //.on('beforeValidate',function() {

@@ -1,8 +1,4 @@
 <?php
-/**
- * Date: 17.01.14
- * Time: 1:06
- */
 
 namespace egor260890\feedback\assets;
 
