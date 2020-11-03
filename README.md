@@ -30,18 +30,18 @@ yii migrate --migrationPath=@egor260890/feedback/migrations/
 Подключаем модуль просмотра сообщений:
 ```$xslt
 'modules' => [
-        'feedback' => [
-            'class' => 'egor260890\feedback\Module',
-        ],
+    'feedback' => [
+        'class' => 'egor260890\feedback\Module',
     ],
+],
 ```
 На фронтенде:
 ```$xslt
 'modules'=>[
-        'feedback-send' => [
-            'class' => 'egor260890\feedback\widgets\Module', 
-        ],
+    'feedback-send' => [
+        'class' => 'egor260890\feedback\widgets\Module', 
     ],
+],
 ```
 Для вывода формы обратной связи:
 ```php
@@ -87,20 +87,20 @@ class Observer implements FeedbackObserverInterface{
 Подключаем его в настройках модуля
 ```$xslt
 'modules' => [
-        'feedback-send' => [
-            'class' => 'egor260890\feedback\widgets\Module',
-            'observers' => [
-                \mypath\Observer:class,
-                \mypath\Observer2:class,
-            ]
-            //либо
-            'observers' => \mypath\Observer:class,
-            //либо 
-            'observers' => function(){
-                return new Observer();
-            },
-        ],
+    'feedback-send' => [
+        'class' => 'egor260890\feedback\widgets\Module',
+        'observers' => [
+            \mypath\Observer:class,
+            \mypath\Observer2:class,
+        ]
+        //либо
+        'observers' => \mypath\Observer:class,
+        //либо 
+        'observers' => function(){
+            return new Observer();
+        },
     ],
+],
 ```
 
 Коммит и заливка на Git
@@ -117,7 +117,7 @@ composer update --ignore-platform-reqs
 ```
 
 Теперь сделаем так, чтобы корректно работал IDE без установки Yii2 в расширение.
-Для этого необходимо в каталоге свиджетом добавить «symbolic link» на vendor
+Для этого необходимо в каталоге с виджетом добавить «symbolic link» на vendor
 ```
 mklink /D C:\OSPanel\domains\yii2-feedback-module\vendor C:\OSPanel\domains\adv.loc\vendor
 ```

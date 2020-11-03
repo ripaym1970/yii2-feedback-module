@@ -2,16 +2,18 @@
 
 use nickdenry\grid\toggle\components\RoundSwitchColumn;
 use egor260890\feedback\widgets\FeedbackForm;
+use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
 use kartik\date\DatePicker;
+use yii\web\View;
 use yii\widgets\Pjax;
 use yii\helpers\Html;
 use egor260890\feedback\helpers\FeedbackHelper;
 use egor260890\feedback\entities\Feedback;
 
-/* @var $this yii\web\View */
+/* @var $this View */
 /* @var $searchModel egor260890\feedback\forms\search\FeedbackSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $dataProvider ActiveDataProvider */
 
 $this->title = 'Обратная связь';
 $this->params['breadcrumbs'][] = 'Обратная связь';
@@ -210,7 +212,7 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
 
     // Открытие формы с отправкой письма особистості/користувачу
     function open_form(name, email) {
-        console.log('open_form');
+        //console.log('open_form');
         $("#modal").modal('show').on('hide.bs.modal', function() {
             console.log('on.hide.bs.modal');
         });
