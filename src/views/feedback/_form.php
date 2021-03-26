@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Форма для отправки вопроса с фронта
+ */
+
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 

@@ -36,6 +36,7 @@ class FeedbackForm extends Widget {
         $model->addRules($this->rules);
 
         $form = ActiveForm::begin($this->formConfig);
+        echo $form->field($model, 'id')->hiddenInput()->label(false);
         echo $this->renderFields($model, $form);
         ActiveForm::end();
 

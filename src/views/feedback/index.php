@@ -48,8 +48,8 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
                 [
                     'attribute' => 'email',
                     'format' => 'raw',
-                    'value' => function ($data) {
-                        return '<a href="javascript:void(0)" onClick="open_form(\''.$data->name.'\',\''.$data->email.'\')">'.$data->email.'</a>';
+                    'value' => function (Feedback $model) {
+                        return '<a href="javascript:void(0)" onClick="open_form(\''.$model->id.'\',\''.$model->name.'\',\''.$model->email.'\')">'.$model->email.'</a>';
                     }
                 ],
                 [
@@ -105,6 +105,12 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
 
 <!--<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>-->
 
+
+<?php
+/**
+ * Модальное окно с формой для отправки ответа на вопрос с бэкенда
+ */
+?>
 <div id="modal" class="modal" style="display: none; padding-right: 16px;">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -211,12 +217,13 @@ $this->params['breadcrumbs'][] = 'Обратная связь';
     });
 
     // Открытие формы с отправкой письма особистості/користувачу
-    function open_form(name, email) {
+    function open_form(id, name, email) {
         //console.log('open_form');
         $("#modal").modal('show').on('hide.bs.modal', function() {
             console.log('on.hide.bs.modal');
         });
 
+        $("#feedbackform-id").val(id).attr('value', id);
         $("#feedbackform-name").val(name).attr('value', name);
         $("#feedbackform-email").val(email).attr('value', email);
     }
