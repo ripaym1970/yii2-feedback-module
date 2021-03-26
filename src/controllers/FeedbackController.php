@@ -190,8 +190,7 @@ $requestPost['FeedbackForm']['name'].', дякуємо за звернення.<
                 ->send();
 
             if ($isSend) {
-                // TODO: Надо найти именно то на которе ответили
-                $feedback = Feedback::findOne(['email' => $requestPost['FeedbackForm']['email']]);
+                $feedback = Feedback::findOne(['id' => $requestPost['FeedbackForm']['id']]);
                 if ($feedback) {
                     $feedback->is_send = true;
                     $feedback->save(false);
